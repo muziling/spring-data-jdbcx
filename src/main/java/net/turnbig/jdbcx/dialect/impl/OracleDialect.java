@@ -66,7 +66,7 @@ public class OracleDialect extends AbstractSQLDialect {
 		int endRow = pageable.getOffset() + pageable.getPageSize();
 		String pagedSql = "select * from ( select tmp_page.*, rownum row_id from ({0}) tmp_page "
 				+ " where rownum <= {1} ) where row_id > {2}";
-		return MessageFormat.format(pagedSql, sortedSql, endRow, startRow);
+		return MessageFormat.format(pagedSql, sortedSql, ""+endRow, ""+startRow);
 	}
 
 }

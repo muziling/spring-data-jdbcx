@@ -37,7 +37,7 @@ public class Db2Dialect extends AbstractSQLDialect {
 		int endRow = pageable.getOffset() + pageable.getPageSize();
 		String pagedSql = "select * from ( select tmp_page.*,rownumber() over() as row_id from ({0}) as tmp_page"
 				+ ") where row_id between {1} and {2} ";
-		return MessageFormat.format(pagedSql, sortedSql, startRow, endRow);
+		return MessageFormat.format(pagedSql, sortedSql, ""+startRow, ""+endRow);
 	}
 
 }
